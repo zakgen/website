@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+	<rect width="1200" height="630" fill="#F7FAF9" />
+	<rect x="64" y="64" width="1072" height="502" rx="44" fill="white" stroke="#D8E1DF" />
+	<rect x="736" y="92" width="340" height="446" rx="36" fill="#263C4D" />
+	<path d="M160 152H309C380.797 152 439 210.203 439 282V282C439 353.797 380.797 412 309 412H293" stroke="#263C4D" stroke-width="34" stroke-linecap="square"/>
+	<path d="M160 152V294" stroke="#263C4D" stroke-width="34" stroke-linecap="square"/>
+	<path d="M231 224H309C342.137 224 369 250.863 369 284V284C369 317.137 342.137 344 309 344H294" stroke="#7CA38D" stroke-width="28" stroke-linecap="square"/>
+	<path d="M231 224V316" stroke="#7CA38D" stroke-width="28" stroke-linecap="square"/>
+	<path d="M96 320H295L426 500H347L249 356H96V320Z" fill="#263C4D"/>
+	<path d="M363 374L455 500H511L413 362L363 374Z" fill="#7CA38D"/>
+	<path d="M158 355V470H239V355" stroke="#263C4D" stroke-width="22" stroke-linecap="square"/>
+	<text x="96" y="538" fill="#263C4D" font-family="Manrope, Arial, sans-serif" font-size="112" font-weight="700" letter-spacing="-4">
+		Rasil
+	</text>
+	<text x="96" y="590" fill="#557081" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="500">
+		Order Clarity &amp; Operational Control
+	</text>
+	<text x="784" y="166" fill="#BED6CA" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="4">
+		WHATSAPP-FIRST COMMERCE
+	</text>
+	<text x="784" y="234" fill="white" font-family="Manrope, Arial, sans-serif" font-size="54" font-weight="700">
+		Confirm orders
+	</text>
+	<text x="784" y="294" fill="white" font-family="Manrope, Arial, sans-serif" font-size="54" font-weight="700">
+		with more control
+	</text>
+	<text x="784" y="372" fill="rgba(255,255,255,0.72)" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="500">
+		Structured sessions
+	</text>
+	<text x="784" y="418" fill="rgba(255,255,255,0.72)" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="500">
+		Response-state tracking
+	</text>
+	<text x="784" y="464" fill="rgba(255,255,255,0.72)" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="500">
+		Operational visibility
+	</text>
+</svg>

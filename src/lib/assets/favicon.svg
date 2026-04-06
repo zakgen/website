@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180" fill="none">
+	<title>Rasil favicon</title>
+	<rect width="180" height="180" rx="40" fill="#263C4D" />
+	<path d="M52 40H101C126.957 40 148 61.0431 148 87V87C148 112.957 126.957 134 101 134H95" stroke="#F8FBFB" stroke-width="16" stroke-linecap="square"/>
+	<path d="M52 40V92" stroke="#F8FBFB" stroke-width="16" stroke-linecap="square"/>
+	<path d="M76 64H102C114.15 64 124 73.8497 124 86V86C124 98.1503 114.15 108 102 108H97" stroke="#7CA38D" stroke-width="14" stroke-linecap="square"/>
+	<path d="M76 64V98" stroke="#7CA38D" stroke-width="14" stroke-linecap="square"/>
+	<path d="M24 102H95L138 156H111L79 114H24V102Z" fill="#F8FBFB"/>
+	<path d="M118 119L145 156H161L132 115L118 119Z" fill="#7CA38D"/>
+	<path d="M47 113V146H73V113" stroke="#F8FBFB" stroke-width="12" stroke-linecap="square"/>
+</svg>
