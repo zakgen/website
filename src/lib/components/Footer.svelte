@@ -7,7 +7,7 @@
 <footer class="border-t border-line-200/80 bg-white/75">
 	<div class="shell grid gap-12 py-12 lg:grid-cols-[1.3fr_0.9fr]">
 		<div class="space-y-5">
-			<Logo className="w-44" />
+			<Logo variant="wordmark" className="w-44" />
 			<p class="max-w-xl text-sm leading-7 text-ink-700">
 				Rasil gives merchants a clearer operating layer for post-order confirmation, helping teams reduce chaos and act with more confidence.
 			</p>

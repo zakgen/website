@@ -9,7 +9,7 @@
 <header class="sticky top-0 z-40 border-b border-white/70 bg-surface-50/85 backdrop-blur-xl">
 	<div class="shell flex items-center justify-between gap-6 py-4">
 		<a class="flex items-center" href={resolve('/')} aria-label="Rasil home">
-			<Logo className="w-36 sm:w-40" />
+			<Logo className="w-12 sm:w-14" />
 		</a>
 
 		<nav class="hidden items-center gap-6 lg:flex">

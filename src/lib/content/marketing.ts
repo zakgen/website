@@ -1,130 +1,164 @@
 export const trustSignals = [
 	'Shopify-first onboarding',
-	'WhatsApp-native confirmation flows',
-	'Structured response states',
-	'Human handoff when automation should step aside',
-	'One operational queue for the team'
+	'WhatsApp order confirmation',
+	'AI agent for customer questions',
+	'Business profile and catalog grounding',
+	'Human handoff when needed',
+	'One inbox for the team'
+] as const;
+
+export const productPillars = [
+	{
+		title: 'Confirm orders automatically',
+		copy:
+			'Reach customers on WhatsApp after checkout, verify intent, and move confirmed orders forward faster.'
+	},
+	{
+		title: 'Answer questions with an AI agent',
+		copy:
+			'Respond to buyer questions about products, delivery, availability, and order status without forcing the team to reply manually every time.'
+	},
+	{
+		title: 'Use real business context',
+		copy:
+			'Ground replies in your business profile, product catalog, and order data so customers get answers that are useful, not generic.'
+	}
 ] as const;
 
 export const painPoints = [
 	{
-		title: 'Orders slip into fragmented follow-up',
+		title: 'Too many orders are still unconfirmed',
 		copy:
-			'Teams bounce between checkout notifications, WhatsApp threads, and internal notes. The result is slow confirmation, uneven handling, and weak visibility.'
+			'Merchants lose time calling or messaging buyers manually, while fake, low-intent, or unreachable orders keep entering the fulfillment flow.'
 	},
 	{
-		title: 'Low-intent demand wastes operational time',
+		title: 'Customer questions slow down the team',
 		copy:
-			'Manual outreach happens too late, or not at all. Risky orders stay mixed with good demand until dispatch teams are already spending effort.'
+			'Teams answer the same questions again and again about products, delivery, availability, and existing orders instead of focusing on sales and operations.'
 	},
 	{
-		title: 'Customer responses are hard to standardize',
+		title: 'Business knowledge is disconnected from the chat',
 		copy:
-			'Confirm, decline, change request, and handoff scenarios often live in free-form chat. That makes it harder to act quickly and harder to report cleanly.'
+			'When product details, business info, and order context are not connected to the conversation, replies become inconsistent and customers lose confidence.'
 	}
 ] as const;
 
 export const workflowSteps = [
 	{
 		step: '01',
-		title: 'Open a confirmation session immediately after checkout',
+		title: 'Connect your store, products, and business profile',
 		copy:
-			'Each order becomes a structured post-order workflow, ready for automated outreach and tracked from the first touch.'
+			'Rasil starts with the context your customers actually need: who you are, what you sell, and what they ordered.'
 	},
 	{
 		step: '02',
-		title: 'Guide the customer to a clear next action on WhatsApp',
+		title: 'Confirm orders on WhatsApp',
 		copy:
-			'Rasil keeps the conversation focused around the real operational outcomes: confirm, decline, request an edit, or escalate to a human.'
+			'Every new order can trigger a confirmation flow that helps filter low-intent demand before it wastes fulfillment time.'
 	},
 	{
 		step: '03',
-		title: 'Give the team one shared view of every outcome',
+		title: 'Let the AI agent handle buyer questions',
 		copy:
-			'Operators can see session state, timing, order edits, and the cases that need manual attention without reconstructing the story from chat logs.'
+			'The agent answers product and order questions using your actual business context, then hands off to a human when the conversation needs it.'
 	}
 ] as const;
 
 export const benefits = [
 	{
-		title: 'Fewer blind spots after checkout',
-		copy: 'Track every confirmation session from first message to final outcome in a single operational timeline.'
+		title: 'Reduce fake and low-intent orders',
+		copy: 'Catch weak demand earlier so bad orders do not keep flowing into packing, dispatch, and support.'
 	},
 	{
-		title: 'Cleaner handling of bad or low-intent orders',
-		copy: 'Surface questionable demand earlier so fulfillment teams are not spending energy on uncertain orders.'
+		title: 'Increase confirmed order quality',
+		copy: 'Get clearer buyer intent before fulfillment and operate with more confidence on what should actually move forward.'
 	},
 	{
-		title: 'Structured response states',
-		copy: 'Turn customer replies into actionable outcomes instead of leaving operators to interpret raw chat threads.'
+		title: 'Answer customers faster',
+		copy: 'Let the AI agent handle frequent product and order questions instantly instead of leaving every reply to the ops team.'
 	},
 	{
-		title: 'Human fallback built in',
-		copy: 'Escalate the right conversations when a customer needs reassurance, clarification, or a manual intervention.'
+		title: 'Keep replies accurate',
+		copy: 'Use your business profile, product data, and order context to give customers grounded answers.'
 	},
 	{
-		title: 'Ops-ready reporting language',
-		copy: 'The system is framed around queue visibility, response timing, and confirmation outcomes, not vanity chatbot metrics.'
+		title: 'Bridge sales, support, and operations',
+		copy: 'One system handles confirmation, buyer questions, and human escalation instead of scattering them across tools.'
 	},
 	{
-		title: 'Built for commerce teams under pressure',
-		copy: 'The experience favors speed, control, and trust, making it fit the day-to-day reality of WhatsApp-heavy merchants.'
+		title: 'Give the team one clear queue',
+		copy: 'Track confirmations, unanswered questions, and escalations from one place instead of rebuilding context across chats.'
 	}
 ] as const;
 
 export const outcomes = [
 	{
+		value: '24/7',
+		label: 'customer reply coverage',
+		copy: 'Handle order confirmations and repeated buyer questions even when the team is not actively online.'
+	},
+	{
 		value: '1',
-		label: 'shared confirmation queue',
-		copy: 'Keep operators aligned around one source of truth instead of scattered chat histories.'
+		label: 'connected commerce inbox',
+		copy: 'Bring order confirmation and customer questions into one operating flow.'
 	},
 	{
-		value: '4',
-		label: 'structured response paths',
-		copy: 'Confirm, decline, edit request, and human handoff are handled explicitly.'
+		value: '3',
+		label: 'context layers',
+		copy: 'Business profile, products, and orders work together to shape better answers.'
 	},
 	{
-		value: 'Live',
-		label: 'session visibility',
-		copy: 'Know what is waiting, what changed, and what requires action without chasing context.'
+		value: 'Higher',
+		label: 'conversion confidence',
+		copy: 'Move faster on real demand and reduce friction between a buyer question and a completed order.'
+	}
+] as const;
+
+export const answerSources = [
+	{
+		title: 'Business profile',
+		copy: 'Store policies, delivery zones, payment options, working hours, and the details buyers usually ask before they trust the order.'
 	},
 	{
-		value: 'Ready',
-		label: 'for platform expansion',
-		copy: 'Start with Shopify now, then extend the same operational layer as your stack evolves.'
+		title: 'Product catalog',
+		copy: 'Product names, variants, pricing, availability, and the information a customer needs before confirming a purchase.'
+	},
+	{
+		title: 'Order context',
+		copy: 'Order status, confirmation state, edit requests, and the specific details tied to the customer conversation.'
 	}
 ] as const;
 
 export const faqs = [
 	{
-		question: 'Is Rasil a chatbot platform?',
+		question: 'What does Rasil actually do?',
 		answer:
-			'No. The product is positioned as an operational control layer for post-order confirmation. Automation matters, but the goal is cleaner merchant operations and clearer decision-making.'
+			'Rasil helps merchants confirm orders on WhatsApp and uses an AI agent to answer customer questions using business, product, and order context.'
+	},
+	{
+		question: 'What kind of questions can the AI agent answer?',
+		answer:
+			'It is designed for common buyer questions around products, availability, delivery, payment, and order follow-up. When the answer needs a human, the conversation can be handed off.'
 	},
 	{
 		question: 'Why focus on WhatsApp first?',
 		answer:
-			'For many merchants, especially in WhatsApp-heavy markets, post-order confirmation already happens there. Rasil meets that behavior instead of forcing the team into a different channel.'
-	},
-	{
-		question: 'What customer outcomes can Rasil manage?',
-		answer:
-			'The product is designed around the operational outcomes that matter most: confirm, decline, edit request, or escalate to a human for intervention.'
+			'Because that is already where many merchants and buyers communicate. Rasil meets the customer in the channel they already use instead of adding more friction.'
 	},
 	{
 		question: 'Which store platforms are supported?',
 		answer:
-			'Shopify is the starting point. YouCan and WooCommerce are part of the roadmap so teams can extend the same operating model across more storefronts.'
+			'Shopify is the starting point. YouCan and WooCommerce are next so merchants can connect the same confirmation and customer-question flow across more storefronts.'
 	},
 	{
-		question: 'Is this only for merchants in Morocco?',
+		question: 'How does Rasil improve business impact?',
 		answer:
-			'The initial story is informed by Moroccan commerce operations, but the product direction is intentionally broader. The workflow works anywhere merchants rely heavily on post-order messaging.'
+			'It helps reduce bad orders, improve order quality before fulfillment, speed up customer responses, and turn more conversations into reliable completed sales.'
 	},
 	{
 		question: 'Can operators still step in manually?',
 		answer:
-			'Yes. Human handoff is part of the design. Rasil should help the team intervene faster, not trap them in rigid automation.'
+			'Yes. Human handoff is built in. The AI agent should reduce repetitive work, not block the team from stepping in when needed.'
 	}
 ] as const;
 
@@ -132,44 +166,44 @@ export const integrations = [
 	{
 		name: 'Shopify',
 		status: 'Available now',
-		copy: 'Bring orders into Rasil automatically and start confirmation workflows without adding manual queue-building.'
+		copy: 'Sync orders and product data into Rasil so order confirmation and customer replies start from real store context.'
 	},
 	{
 		name: 'YouCan',
 		status: 'Planned next',
-		copy: 'Extend the same post-order control model to a storefront stack already familiar to many regional merchants.'
+		copy: 'Bring the same confirmation and AI-assisted support flow to merchants already running high-volume stores on YouCan.'
 	},
 	{
 		name: 'WooCommerce',
 		status: 'Planned next',
-		copy: 'Support merchants that need confirmation operations without leaving the flexibility of WordPress commerce.'
+		copy: 'Connect catalog and order context from WooCommerce so merchants can answer customers and confirm demand from one place.'
 	}
 ] as const;
 
 export const pricingTracks = [
 	{
 		name: 'Launch',
-		fit: 'For teams setting up their first structured confirmation workflow.',
+		fit: 'For merchants launching WhatsApp confirmation and AI-assisted customer replies for the first time.',
 		includes: [
 			'Store integration setup',
-			'Core confirmation session flows',
-			'Operator handoff rules',
-			'Foundational reporting views'
+			'Order confirmation workflow',
+			'AI agent setup for buyer questions',
+			'Operator handoff rules'
 		]
 	},
 	{
 		name: 'Scale',
-		fit: 'For merchants with higher order volume and more team coordination.',
+		fit: 'For merchants with higher volume and a bigger need for response speed and operational control.',
 		includes: [
 			'Advanced queue segmentation',
-			'Operational workflow refinement',
-			'Role-based team usage patterns',
+			'Catalog and business context refinement',
+			'Role-based team workflows',
 			'Priority onboarding support'
 		]
 	},
 	{
 		name: 'Enterprise',
-		fit: 'For larger operations that need custom process design and rollout support.',
+		fit: 'For larger operations that need custom rollout, deeper process design, and broader integration planning.',
 		includes: [
 			'Custom rollout planning',
 			'Multi-team workflow mapping',
@@ -180,8 +214,8 @@ export const pricingTracks = [
 ] as const;
 
 export const contactReasons = [
-	'Book a demo tailored to your confirmation flow',
-	'Assess fit for a WhatsApp-heavy operation',
-	'Discuss Shopify onboarding or platform roadmap',
+	'Book a demo for order confirmation and AI replies',
+	'Assess fit for a WhatsApp-heavy e-commerce business',
+	'Discuss product catalog and business profile setup',
 	'Plan rollout for a multi-operator team'
 ] as const;

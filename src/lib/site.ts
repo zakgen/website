@@ -2,7 +2,7 @@ export const site = {
 	name: 'Rasil',
 	tagline: 'Order Clarity & Operational Control',
 	description:
-		'Rasil helps e-commerce merchants confirm orders on WhatsApp, reduce low-intent demand, and operate with clearer post-order control.',
+		'Rasil helps e-commerce merchants confirm orders on WhatsApp and use an AI agent to answer customer questions with business and product context.',
 	url: 'https://rasil.vercel.app',
 	email: 'hello@rasil.io'
 } as const;
