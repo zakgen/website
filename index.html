@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rasil — Confirmation CR & Réponses IA sur WhatsApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        :root {
+            --bg: #FAFAF8;
+            --bg-white: #FFFFFF;
+            --bg-subtle: #F4F3F0;
+            --border: #E8E6E1;
+            --border-strong: #D4D2CC;
+            --text: #141410;
+            --text-2: #4A4A44;
+            --text-3: #8A8A82;
+            --text-4: #BDBDB5;
+            --green: #1A9E56;
+            --green-bg: #EBF7F1;
+            --green-border: #B8E4CF;
+            --red: #D93025;
+            --red-bg: #FDF0EF;
+            --amber: #C97920;
+            --amber-bg: #FEF6E7;
+            --radius: 8px;
+            --radius-lg: 14px;
+            --radius-xl: 20px;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Geist', system-ui, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            background: rgba(250, 250, 248, 0.88);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-logo-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-2);
+            transition: color .15s
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .btn-nav {
+            background: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 7px 16px;
+            border-radius: var(--radius);
+            transition: opacity .15s;
+        }
+
+        .btn-nav {
+            color: var(--bg-white) !important;
+        }
+
+        .btn-nav:hover {
+            opacity: .85
+        }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 40px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 28px;
+        }
+
+        .hero-eyebrow-line {
+            width: 24px;
+            height: 1px;
+            background: var(--text-4);
+        }
+
+        h1 {
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 600;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--green)
+        }
+
+        .hero-sub {
+            font-size: 17px;
+            color: var(--text-2);
+            line-height: 1.65;
+            margin-bottom: 40px;
+            max-width: 440px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: #fff;
+            font-family: 'Geist', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 22px;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity .15s;
+        }
+
+        .btn-primary:hover {
+            opacity: .85
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-2);
+            font-family: 'Geist', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            padding: 11px 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-strong);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: border-color .15s, color .15s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-3);
+            color: var(--text)
+        }
+
+        /* ── WA MOCKUP ── */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative
+        }
+
+        .wa-phone {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            width: 284px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .04), 0 12px 40px rgba(0, 0, 0, .08);
+            overflow: hidden;
+        }
+
+        .wa-topbar {
+            background: #F0F2F0;
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .wa-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .wa-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text)
+        }
+
+        .wa-online {
+            font-size: 11px;
+            color: var(--green)
+        }
+
+        .wa-body {
+            background: #ECE5DD;
+            padding: 14px 12px;
+            min-height: 340px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .wa-msg {
+            max-width: 88%;
+            border-radius: 10px;
+            padding: 9px 11px;
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        .wa-in {
+            background: var(--bg-white);
+            color: var(--text);
+            border-bottom-left-radius: 3px;
+            align-self: flex-start;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+        }
+
+        .wa-out {
+            background: #DCF8C6;
+            color: #1a1a1a;
+            border-bottom-right-radius: 3px;
+            align-self: flex-end;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+        }
+
+        .wa-time {
+            font-size: 10px;
+            color: var(--text-3);
+            text-align: right;
+            margin-top: 3px
+        }
+
+        .wa-tick {
+            color: #53BDEB
+        }
+
+        .wa-pill {
+            display: inline-block;
+            background: var(--green-bg);
+            color: var(--green);
+            border-radius: 4px;
+            padding: 1px 6px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .wa-pill-amber {
+            background: var(--amber-bg);
+            color: var(--amber)
+        }
+
+        .wa-inputbar {
+            background: #F0F2F0;
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .wa-input {
+            flex: 1;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 7px 13px;
+            font-size: 12px;
+            color: var(--text-3);
+        }
+
+        .wa-sendbtn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Floating cards on hero */
+        .float-card {
+            position: absolute;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 14px 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+        }
+
+        .float-card-1 {
+            top: -10px;
+            right: -30px
+        }
+
+        .float-card-2 {
+            bottom: 20px;
+            left: -40px
+        }
+
+        .float-label {
+            font-size: 11px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: .4px
+        }
+
+        .float-val {
+            font-family: 'Geist Mono', monospace;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        .float-val em {
+            font-style: normal;
+            color: var(--green)
+        }
+
+        /* ── SECTIONS ── */
+        .section {
+            padding: 100px 40px;
+            max-width: 1100px;
+            margin: 0 auto
+        }
+
+        .section-full {
+            padding: 80px 0;
+            border-top: 1px solid var(--border)
+        }
+
+        .section-full-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 18px;
+            height: 1px;
+            background: var(--text-4)
+        }
+
+        h2 {
+            font-size: clamp(28px, 3vw, 42px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -.8px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .section-sub {
+            font-size: 16px;
+            color: var(--text-2);
+            max-width: 560px;
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        /* ── PAIN SECTION ── */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .pain-card {
+            padding: 36px 28px;
+            border-right: 1px solid var(--border);
+            background: var(--bg-white);
+        }
+
+        .pain-card:last-child {
+            border-right: none
+        }
+
+        .pain-num {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-4);
+            margin-bottom: 20px;
+            letter-spacing: .5px;
+        }
+
+        .pain-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text)
+        }
+
+        .pain-card p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            font-weight: 300
+        }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            background: var(--text);
+            padding: 56px 40px;
+        }
+
+        .stats-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Geist Mono', monospace;
+            font-size: 40px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .stat-num em {
+            font-style: normal;
+            color: var(--green)
+        }
+
+        .stat-desc {
+            font-size: 13px;
+            color: #A0A09A;
+            line-height: 1.5;
+            font-weight: 300
+        }
+
+        .stat-src {
+            font-size: 11px;
+            color: #6A6A64;
+            margin-top: 4px;
+            font-family: 'Geist Mono', monospace
+        }
+
+        /* ── STEPS ── */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .step-card {
+            background: var(--bg-white);
+            padding: 40px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-n {
+            font-family: 'Geist Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-4);
+            letter-spacing: .5px;
+            margin-bottom: 24px;
+        }
+
+        .step-card h3 {
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: var(--text)
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            font-weight: 300
+        }
+
+        .step-card-accent {
+            border-top: 2px solid var(--text)
+        }
+
+        /* ── COD VISUAL ── */
+        .cod-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+
+        .cod-panel {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .cod-header {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cod-header-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-2)
+        }
+
+        .live-dot {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .live-dot::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        .cod-body {
+            padding: 12px
+        }
+
+        .order-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 8px;
+            background: var(--bg);
+        }
+
+        .order-row:last-child {
+            margin-bottom: 0
+        }
+
+        .order-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text)
+        }
+
+        .order-id {
+            font-size: 11px;
+            color: var(--text-3);
+            font-family: 'Geist Mono', monospace;
+            margin-top: 1px
+        }
+
+        .order-amt {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text);
+            font-family: 'Geist Mono', monospace
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 100px;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .badge-green {
+            background: var(--green-bg);
+            color: var(--green)
+        }
+
+        .badge-red {
+            background: var(--red-bg);
+            color: var(--red)
+        }
+
+        .badge-amber {
+            background: var(--amber-bg);
+            color: var(--amber)
+        }
+
+        .cod-footer {
+            padding: 14px 18px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-subtle);
+        }
+
+        .cod-foot-label {
+            font-size: 11px;
+            color: var(--text-3);
+            margin-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: .4px
+        }
+
+        .cod-foot-val {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            font-family: 'Geist Mono', monospace;
+            letter-spacing: -.5px
+        }
+
+        .cod-foot-val.green {
+            color: var(--green)
+        }
+
+        /* ── FEATURES ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border)
+        }
+
+        .feat-card {
+            background: var(--bg-white);
+            padding: 36px 32px;
+        }
+
+        .feat-mark {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-4);
+            font-family: 'Geist Mono', monospace;
+            letter-spacing: .5px;
+            margin-bottom: 16px;
+        }
+
+        .feat-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text)
+        }
+
+        .feat-card p {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            font-weight: 300
+        }
+
+        /* ── INTEGRATIONS ── */
+        .integ-grid {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 48px
+        }
+
+        .integ-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px 28px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .integ-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 4px
+        }
+
+        .integ-desc {
+            font-size: 13px;
+            color: var(--text-3);
+            font-weight: 300;
+            margin-bottom: 12px
+        }
+
+        .badge-avail {
+            display: inline-block;
+            background: var(--green-bg);
+            color: var(--green);
+            border: 1px solid var(--green-border);
+            border-radius: 100px;
+            padding: 3px 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .badge-soon2 {
+            display: inline-block;
+            background: var(--bg-subtle);
+            color: var(--text-3);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 3px 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* ── FAQ ── */
+        .faq-list {
+            border-top: 1px solid var(--border);
+            margin-top: 48px
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-q {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .faq-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid var(--border-strong);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--text-2);
+            font-size: 14px;
+            transition: transform .2s;
+        }
+
+        .faq-a {
+            font-size: 14px;
+            color: var(--text-2);
+            line-height: 1.65;
+            font-weight: 300;
+            padding-top: 12px;
+            display: none
+        }
+
+        .faq-item.open .faq-a {
+            display: block
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg)
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            border-top: 1px solid var(--border);
+            background: var(--bg-white);
+            padding: 120px 40px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin: 0 auto 16px;
+            max-width: 560px
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: var(--text-2);
+            max-width: 480px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg);
+        }
+
+        .footer-logo {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        footer p {
+            font-size: 13px;
+            color: var(--text-3)
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--text-3);
+            transition: color .15s
+        }
+
+        .footer-links a:hover {
+            color: var(--text)
+        }
+
+        /* ── DIVIDER SECTION ── */
+        .divider-section {
+            border-top: 1px solid var(--border);
+            background: var(--bg-subtle);
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .divider-section p {
+            font-size: 13px;
+            color: var(--text-3);
+            font-weight: 300
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeup {
+            from {
+                opacity: 0;
+                transform: translateY(16px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .hero-left>* {
+            animation: fadeup .6s ease both
+        }
+
+        .hero-left>*:nth-child(1) {
+            animation-delay: .05s
+        }
+
+        .hero-left>*:nth-child(2) {
+            animation-delay: .12s
+        }
+
+        .hero-left>*:nth-child(3) {
+            animation-delay: .2s
+        }
+
+        .hero-left>*:nth-child(4) {
+            animation-delay: .28s
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px) {
+            nav {
+                padding: 0 20px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 20px 60px;
+                gap: 50px
+            }
+
+            .float-card {
+                display: none
+            }
+
+            .section {
+                padding: 70px 20px
+            }
+
+            .pain-grid {
+                grid-template-columns: 1fr
+            }
+
+            .pain-card {
+                border-right: none;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 20px
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr
+            }
+
+            .cod-grid {
+                grid-template-columns: 1fr;
+                gap: 40px
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr
+            }
+
+            .cta-section {
+                padding: 80px 20px
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+                padding: 24px 20px
+            }
+
+            .section-full-inner {
+                padding: 0 20px
+            }
+
+            .stats-bar {
+                padding: 48px 20px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">
+            <img src="./images/rasil-icon.png" alt="Rasil logo" width="40" height="40">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#probleme">Le problème</a></li>
+            <li><a href="#comment">Comment ça marche</a></li>
+            <li><a href="#fonctions">Fonctionnalités</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="btn-nav">Demander un accès →</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section style="background:var(--bg-white);border-bottom:1px solid var(--border)">
+        <div class="hero">
+            <div class="hero-left">
+                <div class="hero-eyebrow">
+                    <span class="hero-eyebrow-line"></span>
+                    Conçu pour le e-commerce marocain
+                </div>
+                <h1>Fini les commandes CR <em>non confirmées.</em></h1>
+                <p class="hero-sub">
+                    Rasil confirme vos commandes cash-on-delivery sur WhatsApp et répond aux questions clients grâce à
+                    l'IA — 24h/24, 7j/7.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">Demander un accès gratuit →</a>
+                    <a href="#comment" class="btn-secondary">Voir comment ça marche</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <!-- floating stat top right -->
+                <div class="float-card float-card-1">
+                    <div class="float-label">Précision IA</div>
+                    <div class="float-val"><em>98%</em></div>
+                </div>
+
+                <!-- WA phone -->
+                <div class="wa-phone">
+                    <div class="wa-topbar">
+                        <div class="wa-avatar">R</div>
+                        <div>
+                            <div class="wa-name">Rasil · Assistant</div>
+                            <div class="wa-online">● en ligne</div>
+                        </div>
+                    </div>
+                    <div class="wa-body">
+                        <div class="wa-msg wa-in">
+                            Salam 👋 Votre commande <strong>#18421</strong> — 890 MAD est prête.<br />
+                            Confirmez-vous la livraison ?
+                            <div class="wa-time">09:12 <span class="wa-tick">✓✓</span></div>
+                        </div>
+                        <div class="wa-msg wa-out">
+                            Oui je confirme ! C'est pour Casablanca Maarif ?
+                            <div class="wa-time">09:14 <span class="wa-tick">✓✓</span></div>
+                        </div>
+                        <div class="wa-msg wa-in">
+                            Parfait ✅ Confirmée pour Casablanca - Maarif.<br />
+                            Livraison sous 24–48h. <span class="wa-pill">Confirmée</span>
+                            <div class="wa-time">09:14 <span class="wa-tick">✓✓</span></div>
+                        </div>
+                        <div class="wa-msg wa-out">
+                            Je voudrais changer la quantité à 2 unités svp
+                            <div class="wa-time">09:16 <span class="wa-tick">✓✓</span></div>
+                        </div>
+                        <div class="wa-msg wa-in">
+                            Bien reçu. Je transfère à notre équipe avant expédition. <span
+                                class="wa-pill wa-pill-amber">Modif. en cours</span>
+                            <div class="wa-time">09:17 <span class="wa-tick">✓✓</span></div>
+                        </div>
+                    </div>
+                    <div class="wa-inputbar">
+                        <div class="wa-input">Message...</div>
+                        <div class="wa-sendbtn">
+                            <svg width="13" height="13" fill="white" viewBox="0 0 24 24">
+                                <path d="M2 21l21-9L2 3v7l15 2-15 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- floating stat bottom left -->
+                <div class="float-card float-card-2">
+                    <div class="float-label">Réponse moyenne</div>
+                    <div class="float-val">&lt;<em>30s</em></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN -->
+    <section class="section" id="probleme">
+        <div class="eyebrow">Le problème</div>
+        <h2>Le CR au Maroc,<br />c'est compliqué.</h2>
+        <p class="section-sub">
+            Le cash-on-delivery représente plus de 80 % des transactions e-commerce marocaines. Sans confirmation
+            proactive, les retours explosent et la marge s'effondre.
+        </p>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-num">01</div>
+                <h3>Trop de fausses commandes</h3>
+                <p>Des commandes CR sont passées sans intention réelle. Le colis part, revient, et vous payez les frais
+                    de retour dans les deux sens.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-num">02</div>
+                <h3>Questions qui paralysent l'équipe</h3>
+                <p>Livraison, disponibilité, suivi — votre équipe répond manuellement aux mêmes questions des dizaines
+                    de fois par jour.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-num">03</div>
+                <h3>Données éparpillées</h3>
+                <p>Vos informations produits, commandes et politiques de livraison sont dans trois outils différents.
+                    Vos agents improvisent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div>
+                <div class="stat-num"><em>98%</em></div>
+                <div class="stat-desc">Précision des réponses IA</div>
+                <div class="stat-src">questions produit & livraison</div>
+            </div>
+            <div>
+                <div class="stat-num">&lt;<em>30s</em></div>
+                <div class="stat-desc">Temps de réponse moyen</div>
+                <div class="stat-src">confirmation & réponse client</div>
+            </div>
+            <div>
+                <div class="stat-num"><em>24/7</em></div>
+                <div class="stat-desc">Disponibilité garantie</div>
+                <div class="stat-src">week-ends & jours fériés</div>
+            </div>
+            <div>
+                <div class="stat-num">–<em>40%</em></div>
+                <div class="stat-desc">Réduction estimée des retours CR</div>
+                <div class="stat-src">par confirmation proactive</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="section-full" id="comment">
+        <div class="section-full-inner">
+            <div class="eyebrow">Comment ça marche</div>
+            <h2>Trois étapes. Zéro friction.</h2>
+            <p class="section-sub">
+                Rasil se connecte à votre boutique, confirme chaque commande CR sur WhatsApp et gère les questions
+                clients — sans intervention manuelle.
+            </p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card step-card-accent">
+                <div class="step-n">ÉTAPE 01</div>
+                <h3>Connectez votre boutique</h3>
+                <p>Reliez votre boutique Shopify en quelques minutes. Rasil synchronise automatiquement commandes,
+                    produits et politiques business.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-n">ÉTAPE 02</div>
+                <h3>Confirmez les CR sur WhatsApp</h3>
+                <p>Chaque nouvelle commande déclenche un message WhatsApp automatique. Le client confirme, modifie ou
+                    annule — sans appel téléphonique.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-n">ÉTAPE 03</div>
+                <h3>L'IA répond à votre place</h3>
+                <p>L'agent IA répond aux questions fréquentes en s'appuyant sur vos vraies données produits et
+                    commandes. Votre équipe intervient seulement si nécessaire.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COD VISUAL -->
+    <section class="section" id="cr">
+        <div class="cod-grid">
+            <div>
+                <div class="eyebrow">File de confirmation</div>
+                <h2>Visibilité totale sur vos commandes CR.</h2>
+                <p
+                    style="font-size:16px;color:var(--text-2);line-height:1.7;font-weight:300;margin-top:12px;max-width:400px">
+                    Suivez en temps réel l'état de chaque commande : confirmée, modifiée, refusée ou escaladée. Plus
+                    aucune commande ne passe entre les mailles.
+                </p>
+                <div style="margin-top:36px;display:flex;flex-direction:column;gap:14px">
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <div
+                            style="width:18px;height:18px;border-radius:50%;background:var(--green-bg);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                            <svg width="9" height="9" fill="none" stroke="var(--green)" stroke-width="2.5"
+                                stroke-linecap="round" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                        </div>
+                        <p style="font-size:14px;color:var(--text-2);font-weight:300">File de confirmations avec statuts
+                            en temps réel</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <div
+                            style="width:18px;height:18px;border-radius:50%;background:var(--green-bg);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                            <svg width="9" height="9" fill="none" stroke="var(--green)" stroke-width="2.5"
+                                stroke-linecap="round" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                        </div>
+                        <p style="font-size:14px;color:var(--text-2);font-weight:300">Escalade humaine automatique sur
+                            les cas complexes</p>
+                    </div>
+                    <div style="display:flex;align-items:flex-start;gap:12px">
+                        <div
+                            style="width:18px;height:18px;border-radius:50%;background:var(--green-bg);border:1px solid var(--green-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px">
+                            <svg width="9" height="9" fill="none" stroke="var(--green)" stroke-width="2.5"
+                                stroke-linecap="round" viewBox="0 0 24 24">
+                                <path d="M20 6L9 17l-5-5" />
+                            </svg>
+                        </div>
+                        <p style="font-size:14px;color:var(--text-2);font-weight:300">Tableau de bord opérationnel pour
+                            toute l'équipe</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cod-panel">
+                <div class="cod-header">
+                    <span class="cod-header-title">File de confirmation — aujourd'hui</span>
+                    <span class="live-dot">Live</span>
+                </div>
+                <div class="cod-body">
+                    <div class="order-row">
+                        <div>
+                            <div class="order-name">Nour Home</div>
+                            <div class="order-id">#18421 · Casablanca</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                            <span class="order-amt">890 MAD</span>
+                            <span class="badge badge-amber">En attente</span>
+                        </div>
+                    </div>
+                    <div class="order-row">
+                        <div>
+                            <div class="order-name">Atlas Beauty</div>
+                            <div class="order-id">#18418 · Rabat</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                            <span class="order-amt">540 MAD</span>
+                            <span class="badge badge-red">Modif. demandée</span>
+                        </div>
+                    </div>
+                    <div class="order-row">
+                        <div>
+                            <div class="order-name">Casa Active</div>
+                            <div class="order-id">#18412 · Marrakech</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                            <span class="order-amt">1 120 MAD</span>
+                            <span class="badge badge-green">✓ Confirmée</span>
+                        </div>
+                    </div>
+                    <div class="order-row">
+                        <div>
+                            <div class="order-name">Lina Shop</div>
+                            <div class="order-id">#18409 · Fès</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                            <span class="order-amt">320 MAD</span>
+                            <span class="badge badge-green">✓ Confirmée</span>
+                        </div>
+                    </div>
+                    <div class="order-row">
+                        <div>
+                            <div class="order-name">Souss Mode</div>
+                            <div class="order-id">#18403 · Agadir</div>
+                        </div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+                            <span class="order-amt">760 MAD</span>
+                            <span class="badge badge-red">✗ Refusée</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cod-footer">
+                    <div>
+                        <div class="cod-foot-label">Confirmées</div>
+                        <div class="cod-foot-val green">34 cmd</div>
+                    </div>
+                    <div style="text-align:right">
+                        <div class="cod-foot-label">Retours évités</div>
+                        <div class="cod-foot-val">– 8</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <div class="section-full" id="fonctions">
+        <div class="section-full-inner">
+            <div class="eyebrow">Fonctionnalités</div>
+            <h2>Tout ce dont vous avez besoin.</h2>
+            <p class="section-sub">Un seul outil pour la confirmation des commandes, les réponses clients, et le suivi
+                opérationnel de votre équipe.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feat-card">
+                <div class="feat-mark">F — 01</div>
+                <h3>Confirmation WhatsApp automatique</h3>
+                <p>Chaque commande CR déclenche un message de confirmation sur WhatsApp. Le client répond, Rasil gère —
+                    confirmation, refus ou escalade vers votre équipe.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-mark">F — 02</div>
+                <h3>Agent IA ancré dans vos données</h3>
+                <p>L'IA répond en utilisant votre catalogue produits, vos politiques et le statut réel de chaque
+                    commande. Pas de réponses génériques.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-mark">F — 03</div>
+                <h3>Passage humain intelligent</h3>
+                <p>Quand la conversation dépasse l'IA, le dossier est transféré à un opérateur avec tout le contexte
+                    déjà disponible — aucune perte d'information.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-mark">F — 04</div>
+                <h3>Tableau de bord d'équipe</h3>
+                <p>File de confirmation, questions en attente, transferts humains — tout en un seul endroit pour toute
+                    l'équipe opérationnelle.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTEGRATIONS -->
+    <section class="section">
+        <div class="eyebrow">Intégrations</div>
+        <h2>Connecté à votre boutique.</h2>
+        <p class="section-sub" style="margin-bottom:0">
+            Branchez Rasil directement sur votre plateforme e-commerce existante. Synchronisation automatique des
+            commandes et produits.
+        </p>
+        <div class="integ-grid">
+            <div class="integ-card">
+                <div class="integ-name">Shopify</div>
+                <div class="integ-desc">Synchronisation commandes & produits en temps réel</div>
+                <span class="badge-avail">Disponible maintenant</span>
+            </div>
+            <div class="integ-card">
+                <div class="integ-name">YouCan</div>
+                <div class="integ-desc">Plateforme e-commerce MENA — merchants haute volumétrie</div>
+                <span class="badge-soon2">Bientôt disponible</span>
+            </div>
+            <div class="integ-card">
+                <div class="integ-name">WooCommerce</div>
+                <div class="integ-desc">Connectez vos boutiques WordPress à Rasil</div>
+                <span class="badge-soon2">Bientôt disponible</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <div class="section-full" id="faq">
+        <div class="section-full-inner">
+            <div class="eyebrow">FAQ</div>
+            <h2>Questions fréquentes.</h2>
+            <div class="faq-list">
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Qu'est-ce que Rasil fait exactement ? <span class="faq-icon">+</span></div>
+                    <div class="faq-a">Rasil aide les marchands à confirmer les commandes CR sur WhatsApp et utilise un
+                        agent IA pour répondre aux questions clients à partir des données réelles de votre boutique —
+                        produits, commandes, politiques.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Pourquoi WhatsApp en priorité ? <span class="faq-icon">+</span></div>
+                    <div class="faq-a">Parce que c'est déjà le canal de communication principal entre marchands et
+                        acheteurs au Maroc. Rasil rencontre le client là où il se trouve, sans ajouter de friction
+                        supplémentaire.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">À quelles questions l'IA peut-elle répondre ? <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-a">L'agent est conçu pour les questions courantes : disponibilité produit, délais de
+                        livraison, zones de livraison, modes de paiement, suivi de commande. Pour les conversations plus
+                        complexes, la main est passée à un opérateur humain.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Mon équipe peut-elle toujours intervenir manuellement ? <span
+                            class="faq-icon">+</span></div>
+                    <div class="faq-a">Oui. Le passage humain est intégré au cœur du produit. L'agent IA réduit le
+                        travail répétitif, il ne bloque jamais votre équipe d'intervenir quand c'est nécessaire.</div>
+                </div>
+                <div class="faq-item" onclick="this.classList.toggle('open')">
+                    <div class="faq-q">Quelles plateformes sont supportées ? <span class="faq-icon">+</span></div>
+                    <div class="faq-a">Shopify est disponible maintenant. YouCan et WooCommerce arrivent prochainement
+                        pour que les marchands puissent connecter le même flux de confirmation et de questions clients
+                        sur plus de plateformes.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <div class="eyebrow" style="justify-content:center">Rejoignez la bêta</div>
+        <h2>Prêt à réduire vos retours CR ?</h2>
+        <p>Rasil est en accès anticipé. Demandez votre accès aujourd'hui et faites partie des premiers marchands
+            marocains à automatiser leur confirmation de commandes.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="mailto:zakariyaimzilen@gmail.com" class="btn-primary" style="font-size:15px;padding:13px 26px">
+                Demander un accès gratuit →
+            </a>
+            <a href="mailto:zakariyaimzilen@gmail.com" class="btn-secondary" style="font-size:15px;padding:13px 22px">
+                zakariyaimzilen@gmail.com
+            </a>
+        </div>
+        <p style="font-size:13px;color:var(--text-3);margin-top:28px;font-weight:300">Réponse sous 24h · Aucun
+            engagement</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">
+            <span class="nav-logo-dot"></span>
+            <img src="./images/rasil-icon.png" alt="Rasil logo" width="30" height="30">
+
+        </div>
+        <p>© 2026 Rasil · Confirmation CR & Réponses IA pour le e-commerce marocain</p>
+        <div class="footer-links">
+            <a href="mailto:zakariyaimzilen@gmail.com">zakariyaimzilen@gmail.com</a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle is handled via onclick inline
+    </script>
+</body>
+
+</html>
