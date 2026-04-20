@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rasil — Confirmation CR & Réponses IA sur WhatsApp</title>
+    <title>Rasil — Confirmation Commandes & Réponses IA sur WhatsApp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="shortcut icon" href="./images/rasil-fav.ico" type="image/x-icon">
     <link
@@ -131,11 +131,11 @@
         .hero {
             min-height: 100vh;
             padding: 120px 40px 80px;
-            max-width: 1100px;
+            max-width: 1320px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            grid-template-columns: .68fr 1.32fr;
+            gap: 44px;
             align-items: center;
         }
 
@@ -207,6 +207,26 @@
             opacity: .85
         }
 
+        .btn-whatsapp {
+            background: var(--green);
+            color: #fff;
+            font-family: 'Geist', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 11px 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--green);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: opacity .15s, transform .15s;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: .9;
+            transform: translateY(-1px);
+        }
+
         .btn-secondary {
             background: transparent;
             color: var(--text-2);
@@ -227,12 +247,179 @@
             color: var(--text)
         }
 
+        /* ── HERO VIDEO ── */
+        .hero-video-wrapper {
+            width: min(100%, 820px);
+            padding: 12px;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeup 0.8s ease 0.4s forwards;
+            background: linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(250, 250, 248, .94));
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            box-shadow: 0 28px 90px rgba(20, 20, 16, .12), 0 6px 18px rgba(20, 20, 16, .05);
+        }
+
+        .hero-video-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: -28px 40px auto;
+            height: 34px;
+            background: var(--green);
+            opacity: .16;
+            filter: blur(24px);
+            pointer-events: none;
+        }
+
+        .hero-video-chrome {
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 4px 8px;
+            gap: 12px;
+        }
+
+        .hero-window-dots {
+            display: flex;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .hero-window-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-strong);
+        }
+
+        .hero-window-dots span:nth-child(2) {
+            background: var(--amber)
+        }
+
+        .hero-window-dots span:nth-child(3) {
+            background: var(--green)
+        }
+
+        .hero-video-title {
+            min-width: 0;
+            font-size: 12px;
+            color: var(--text-3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .hero-video-status {
+            border: 1px solid var(--green-border);
+            background: var(--green-bg);
+            color: var(--green);
+            border-radius: 999px;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .hero-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, .08);
+            background: var(--bg-white);
+            display: block;
+            object-fit: cover;
+        }
+
+        .hero-video-overlay {
+            position: absolute;
+            inset: 50px 12px 58px;
+            border-radius: 14px;
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, .22), transparent 38%),
+                linear-gradient(0deg, rgba(20, 20, 16, .08), transparent 24%);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22);
+            pointer-events: none;
+        }
+
         /* ── WA MOCKUP ── */
         .hero-visual {
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative
+            position: relative;
+            min-height: 640px;
+        }
+
+        .hero-visual .wa-phone {
+            position: absolute;
+            width: 196px;
+            left: -90px;
+            top: -20px;
+            z-index: 20;
+            transform: rotate(2deg);
+        }
+
+        .hero-visual .wa-body {
+            min-height: 0;
+            max-height: 168px;
+            overflow-y: auto;
+            padding: 9px 8px;
+            gap: 6px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(20, 20, 16, .24) transparent;
+        }
+
+        .hero-visual .wa-msg {
+            font-size: 9.5px;
+            padding: 6px 8px;
+        }
+
+        .hero-visual .wa-topbar {
+            padding: 9px 10px;
+            gap: 8px;
+        }
+
+        .hero-visual .wa-avatar {
+            width: 26px;
+            height: 26px;
+            font-size: 11px;
+        }
+
+        .hero-visual .wa-name {
+            font-size: 11px;
+        }
+
+        .hero-visual .wa-online,
+        .hero-visual .wa-time,
+        .hero-visual .wa-pill {
+            font-size: 8.5px;
+        }
+
+        .hero-visual .wa-inputbar {
+            padding: 7px 8px;
+        }
+
+        .hero-visual .wa-input {
+            padding: 5px 9px;
+            font-size: 10px;
+        }
+
+        .hero-visual .wa-sendbtn {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hero-visual .wa-body::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .hero-visual .wa-body::-webkit-scrollbar-thumb {
+            background: rgba(20, 20, 16, .24);
+            border-radius: 999px;
         }
 
         .wa-phone {
@@ -378,13 +565,15 @@
         }
 
         .float-card-1 {
-            top: -10px;
-            right: -30px
+            top: 42px;
+            right: 18px;
+            z-index: 30;
         }
 
         .float-card-2 {
-            bottom: 20px;
-            left: -40px
+            bottom: 18px;
+            left: 28px;
+            z-index: 30;
         }
 
         .float-label {
@@ -589,7 +778,7 @@
             border-top: 2px solid var(--text)
         }
 
-        /* ── COD VISUAL ── */
+        /* ── CONFIRMATION VISUAL ── */
         .cod-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1004,7 +1193,30 @@
             .hero {
                 grid-template-columns: 1fr;
                 padding: 100px 20px 60px;
-                gap: 50px
+                gap: 36px
+            }
+
+            .hero-visual {
+                min-height: auto;
+                align-items: flex-start;
+            }
+
+            .hero-video-wrapper {
+                width: 100%;
+                padding: 8px;
+            }
+
+            .hero-video {
+                border-radius: 12px;
+            }
+
+            .hero-video-overlay {
+                inset: 46px 8px 54px;
+                border-radius: 12px;
+            }
+
+            .hero-visual .wa-phone {
+                display: none;
             }
 
             .float-card {
@@ -1088,18 +1300,36 @@
                     <span class="hero-eyebrow-line"></span>
                     Conçu pour le e-commerce marocain
                 </div>
-                <h1>Fini les commandes CR <em>non confirmées.</em></h1>
+                <h1>Commandes enfin <em>confirmées.</em></h1>
                 <p class="hero-sub">
-                    Rasil confirme vos commandes cash-on-delivery sur WhatsApp et répond aux questions clients grâce à
-                    l'IA — 24h/24, 7j/7.
+                    Rasil confirme les commandes à paiement à la livraison sur WhatsApp, réduit les retours de colis et
+                    répond aux questions clients grâce à l'IA — 24h/24, 7j/7.
                 </p>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn-primary">Demander un accès gratuit →</a>
+                    <a href="https://wa.me/212620744416" class="btn-whatsapp">Demander un accès gratuit →</a>
                     <a href="#comment" class="btn-secondary">Voir comment ça marche</a>
                 </div>
             </div>
 
             <div class="hero-visual">
+                <div class="hero-video-wrapper" aria-label="Vidéo d'introduction Rasil">
+                    <div class="hero-video-chrome">
+                        <div class="hero-window-dots" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="hero-video-title">Intro Rasil · Confirmation WhatsApp</div>
+                        <div class="hero-video-status">En lecture</div>
+                    </div>
+                    <video class="hero-video" autoplay loop muted playsinline controls preload="auto"
+                        aria-label="Vidéo d'introduction de Rasil">
+                        <source src="./videos/intro.mp4" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                    <div class="hero-video-overlay"></div>
+                </div>
+
                 <!-- floating stat top right -->
                 <div class="float-card float-card-1">
                     <div class="float-label">Précision IA</div>
@@ -1162,17 +1392,17 @@
     <!-- PAIN -->
     <section class="section" id="probleme">
         <div class="eyebrow">Le problème</div>
-        <h2>Le CR au Maroc,<br />c'est compliqué.</h2>
+        <h2>Le paiement à la livraison,<br />c'est compliqué.</h2>
         <p class="section-sub">
-            Le cash-on-delivery représente plus de 80 % des transactions e-commerce marocaines. Sans confirmation
-            proactive, les retours explosent et la marge s'effondre.
+            Quand le client paie à la réception, chaque commande non confirmée peut devenir un retour coûteux. Rasil
+            sécurise la commande avant l'expédition pour protéger votre marge.
         </p>
         <div class="pain-grid">
             <div class="pain-card">
                 <div class="pain-num">01</div>
                 <h3>Trop de fausses commandes</h3>
-                <p>Des commandes CR sont passées sans intention réelle. Le colis part, revient, et vous payez les frais
-                    de retour dans les deux sens.</p>
+                <p>Des commandes sont passées sans intention réelle. Le colis part, revient, et vous payez les frais de
+                    retour dans les deux sens.</p>
             </div>
             <div class="pain-card">
                 <div class="pain-num">02</div>
@@ -1209,7 +1439,7 @@
             </div>
             <div>
                 <div class="stat-num">–<em>40%</em></div>
-                <div class="stat-desc">Réduction estimée des retours CR</div>
+                <div class="stat-desc">Réduction estimée des retours de colis</div>
                 <div class="stat-src">par confirmation proactive</div>
             </div>
         </div>
@@ -1221,8 +1451,8 @@
             <div class="eyebrow">Comment ça marche</div>
             <h2>Trois étapes. Zéro friction.</h2>
             <p class="section-sub">
-                Rasil se connecte à votre boutique, confirme chaque commande CR sur WhatsApp et gère les questions
-                clients — sans intervention manuelle.
+                Rasil se connecte à votre boutique, confirme chaque commande avant expédition sur WhatsApp et gère les
+                questions clients — sans intervention manuelle.
             </p>
         </div>
         <div class="steps-grid">
@@ -1234,7 +1464,7 @@
             </div>
             <div class="step-card">
                 <div class="step-n">ÉTAPE 02</div>
-                <h3>Confirmez les CR sur WhatsApp</h3>
+                <h3>Confirmez les commandes sur WhatsApp</h3>
                 <p>Chaque nouvelle commande déclenche un message WhatsApp automatique. Le client confirme, modifie ou
                     annule — sans appel téléphonique.</p>
             </div>
@@ -1247,12 +1477,12 @@
         </div>
     </div>
 
-    <!-- COD VISUAL -->
+    <!-- CONFIRMATION VISUAL -->
     <section class="section" id="cr">
         <div class="cod-grid">
             <div>
                 <div class="eyebrow">File de confirmation</div>
-                <h2>Visibilité totale sur vos commandes CR.</h2>
+                <h2>Visibilité totale sur vos commandes à confirmer.</h2>
                 <p
                     style="font-size:16px;color:var(--text-2);line-height:1.7;font-weight:300;margin-top:12px;max-width:400px">
                     Suivez en temps réel l'état de chaque commande : confirmée, modifiée, refusée ou escaladée. Plus
@@ -1378,8 +1608,8 @@
             <div class="feat-card">
                 <div class="feat-mark">F — 01</div>
                 <h3>Confirmation WhatsApp automatique</h3>
-                <p>Chaque commande CR déclenche un message de confirmation sur WhatsApp. Le client répond, Rasil gère —
-                    confirmation, refus ou escalade vers votre équipe.</p>
+                <p>Chaque commande à paiement à la livraison déclenche un message de confirmation sur WhatsApp. Le
+                    client répond, Rasil gère — confirmation, refus ou escalade vers votre équipe.</p>
             </div>
             <div class="feat-card">
                 <div class="feat-mark">F — 02</div>
@@ -1437,9 +1667,9 @@
             <div class="faq-list">
                 <div class="faq-item" onclick="this.classList.toggle('open')">
                     <div class="faq-q">Qu'est-ce que Rasil fait exactement ? <span class="faq-icon">+</span></div>
-                    <div class="faq-a">Rasil aide les marchands à confirmer les commandes CR sur WhatsApp et utilise un
-                        agent IA pour répondre aux questions clients à partir des données réelles de votre boutique —
-                        produits, commandes, politiques.</div>
+                    <div class="faq-a">Rasil aide les marchands à confirmer les commandes à paiement à la livraison sur
+                        WhatsApp et utilise un agent IA pour répondre aux questions clients à partir des données réelles
+                        de votre boutique — produits, commandes, politiques.</div>
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('open')">
                     <div class="faq-q">Pourquoi WhatsApp en priorité ? <span class="faq-icon">+</span></div>
@@ -1473,15 +1703,12 @@
     <!-- CTA -->
     <section class="cta-section" id="contact">
         <div class="eyebrow" style="justify-content:center">Rejoignez la bêta</div>
-        <h2>Prêt à réduire vos retours CR ?</h2>
+        <h2>Prêt à réduire vos retours de colis ?</h2>
         <p>Rasil est en accès anticipé. Demandez votre accès aujourd'hui et faites partie des premiers marchands
             marocains à automatiser leur confirmation de commandes.</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-            <a href="mailto:zakariyaimzilen@gmail.com" class="btn-primary" style="font-size:15px;padding:13px 26px">
+            <a href="https://wa.me/212620744416" class="btn-secondary" style="font-size:15px;padding:13px 22px">
                 Demander un accès gratuit →
-            </a>
-            <a href="mailto:zakariyaimzilen@gmail.com" class="btn-secondary" style="font-size:15px;padding:13px 22px">
-                zakariyaimzilen@gmail.com
             </a>
         </div>
         <p style="font-size:13px;color:var(--text-3);margin-top:28px;font-weight:300">Réponse sous 24h · Aucun
@@ -1495,9 +1722,10 @@
             <img src="./images/rasil-icon.png" alt="Rasil logo" width="30" height="30">
 
         </div>
-        <p>© 2026 Rasil · Confirmation CR & Réponses IA pour le e-commerce marocain</p>
+        <p>© 2026 Rasil · Commandes confirmées & réponses IA pour le e-commerce marocain</p>
         <div class="footer-links">
             <a href="mailto:zakariyaimzilen@gmail.com">zakariyaimzilen@gmail.com</a>
+            <a href="https://wa.me/212620744416">+212 620-744416</a>
         </div>
     </footer>
 
